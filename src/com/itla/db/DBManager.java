@@ -3,7 +3,6 @@ package com.itla.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.sql.SQLException;
 
 public class DBManager {
 
@@ -17,22 +16,9 @@ public class DBManager {
     public void conectarDB() {
         try {
             con = DriverManager.getConnection(url, user, password);
-            stmnt = con.createStatement();
-
             System.out.println("Conectado");
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    public void desconectarDB() {
-        try {
-            if (con != null) {
-                con.close();
-            }
-            System.out.println("Desconectado");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
         }
     }
 }
