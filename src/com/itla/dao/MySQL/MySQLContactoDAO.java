@@ -105,23 +105,23 @@ public class MySQLContactoDAO implements ContactoDAO {
     @Override
     public Contacto Obtener(Long id) {
         try {
-            final PreparedStatement statement = conn.prepareStatement(SELECCIONARUNO);
+            final PreparedStatement pstmnt = conn.prepareStatement(SELECCIONARUNO);
 
-            try (statement) {
-                statement.setLong(1, id);
-                statement.execute();
+            try (pstmnt) {
+                pstmnt.setLong(1, id);
+                pstmnt.execute();
 
-                final ResultSet resultSet = statement.getResultSet();
+                final ResultSet rs = pstmnt.getResultSet();
 
-                try (resultSet) {
-                    if (resultSet.next()) {
+                try (rs) {
+                    if (rs.next()) {
                         return new Contacto(
-                                resultSet.getLong("id_contacto"),
-                                resultSet.getString("nombre"),
-                                resultSet.getString("apellidos"),
-                                resultSet.getString("empresa"),
-                                resultSet.getString("telefono"),
-                                resultSet.getString("correo")
+                                rs.getLong("id_contacto"),
+                                rs.getString("nombre"),
+                                rs.getString("apellidos"),
+                                rs.getString("empresa"),
+                                rs.getString("telefono"),
+                                rs.getString("correo")
                         );
                     } else {
                         return null;
