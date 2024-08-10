@@ -1,5 +1,6 @@
 DROP USER IF EXISTS 'final'@'localhost';
 CREATE USER 'final'@'localhost' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON db_final.* TO 'final'@'localhost';
 
 DROP DATABASE IF EXISTS db_final;
 CREATE DATABASE db_final;
