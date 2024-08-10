@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MySQLContactoDAO implements ContactoDAO {
 
@@ -66,10 +68,42 @@ public class MySQLContactoDAO implements ContactoDAO {
 
     @Override
     public void Modificar(Contacto con) {
+        try {
+            PreparedStatement pstmnt;
+            pstmnt = conn.prepareStatement(UPDATE);
+            
+            try (pstmnt) {
+
+                pstmnt.setString(1, con.getNombre());
+                pstmnt.setString(2, con.getApellidos());
+                pstmnt.setString(3, con.getEmpresa());
+                pstmnt.setString(4, con.getTelefono());
+                pstmnt.setString(5, con.getCorreo());
+                pstmnt.setLong(6, con.getIdContacto());
+
+                pstmnt.execute();
+
+                System.out.println(String.format("Fue actuaizado el contacto: %s", con));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void Eliminar(Contacto con) {
+        try{
+            PreparedStatement pstmnt;
+            pstmnt = conn.prepareStatement(DELETE);
+            try(pstmnt){
+                pstmnt.setLong(1, con.getIdContacto());
+                
+            }catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(MySQLContactoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
