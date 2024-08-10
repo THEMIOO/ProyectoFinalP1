@@ -1,2 +1,3 @@
 *.mf
 nbproject/private/private.properties
+/build/
