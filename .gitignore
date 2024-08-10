@@ -1,3 +1,4 @@
 *.mf
 nbproject/private/private.properties
 /build/
+nbproject/private/private.xml
