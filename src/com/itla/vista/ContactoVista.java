@@ -5,6 +5,8 @@
 package com.itla.vista;
 
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,6 +25,71 @@ public class ContactoVista extends javax.swing.JFrame {
         
         // Cambiemos el color de fondo
         getContentPane().setBackground(Color.WHITE);
+    }
+    
+     public String getTxtSearchId() {
+        return txtSearchId.getText();
+    }
+
+    public void setTxtSearchId(String text) {
+        this.txtSearchId.setText(text);
+    }
+
+    public String getTxtName1() {
+        return txtName1.getText();
+    }
+
+    public void setTxtName1(String text) {
+        this.txtName1.setText(text);
+    }
+
+    public String getTxtLastName() {
+        return txtLastName.getText();
+    }
+
+    public void setTxtLastName(String text) {
+        this.txtLastName.setText(text);
+    }
+
+    public String getTxtEmail() {
+        return txtEmail.getText();
+    }
+
+    public void setTxtEmail(String text) {
+        this.txtEmail.setText(text);
+    }
+
+    public String getTxtTel() {
+        return txtTel.getText();
+    }
+
+    public void setTxtTel(String text) {
+        this.txtTel.setText(text);
+    }
+
+    public String getJTextCompany() {
+        return jTextCompany.getText();
+    }
+
+    public void setJTextCompany(String text) {
+        this.jTextCompany.setText(text);
+    }
+
+    public void addSearchIdListener(ActionListener listener) {
+        btnSearchId.addActionListener(listener);
+    }
+
+    public void addAddContactListener(ActionListener listener) {
+        btnAddContact.addActionListener(listener);
+    }
+    
+    public void addListarTodosListener(ActionListener listener) {
+        btnListarTodos.addActionListener(listener);
+    }
+
+
+    public DefaultTableModel getTableModel() {
+        return (DefaultTableModel) tblContact.getModel();
     }
 
     /**
@@ -48,6 +115,7 @@ public class ContactoVista extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnSearchId = new rojeru_san.rsbutton.RSButtonRound();
         btnAddContact = new rojeru_san.rsbutton.RSButtonRound();
+        btnListarTodos = new rojeru_san.rsbutton.RSButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,11 +127,6 @@ public class ContactoVista extends javax.swing.JFrame {
         jTextCompany.setBordeColorFocus(new java.awt.Color(0, 113, 181));
         jTextCompany.setFont(new java.awt.Font("Roboto Bold", 0, 18)); // NOI18N
         jTextCompany.setPlaceholder("Empresa");
-        jTextCompany.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCompanyActionPerformed(evt);
-            }
-        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user (3).png"))); // NOI18N
 
@@ -71,66 +134,47 @@ public class ContactoVista extends javax.swing.JFrame {
         txtName1.setBordeColorFocus(new java.awt.Color(0, 113, 181));
         txtName1.setFont(new java.awt.Font("Roboto Bold", 0, 18)); // NOI18N
         txtName1.setPlaceholder("Nombre");
-        txtName1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtName1ActionPerformed(evt);
-            }
-        });
 
         txtLastName.setForeground(new java.awt.Color(0, 113, 181));
         txtLastName.setBordeColorFocus(new java.awt.Color(0, 113, 181));
         txtLastName.setFont(new java.awt.Font("Roboto Bold", 0, 18)); // NOI18N
         txtLastName.setPlaceholder("Apellidos");
-        txtLastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLastNameActionPerformed(evt);
-            }
-        });
 
         txtEmail.setForeground(new java.awt.Color(0, 113, 181));
         txtEmail.setBordeColorFocus(new java.awt.Color(0, 113, 181));
         txtEmail.setFont(new java.awt.Font("Roboto Bold", 0, 18)); // NOI18N
         txtEmail.setPlaceholder("Correo");
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
 
         txtSearchId.setForeground(new java.awt.Color(0, 113, 181));
         txtSearchId.setBordeColorFocus(new java.awt.Color(0, 113, 181));
         txtSearchId.setFont(new java.awt.Font("Roboto Bold", 0, 18)); // NOI18N
         txtSearchId.setPlaceholder("id");
-        txtSearchId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchIdActionPerformed(evt);
-            }
-        });
 
         tblContact.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellidos", "Correo", "Telefono", "Empresa"
+                "ID", "Nombre", "Apellidos", "Correo", "Telefono", "Empresa"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -154,24 +198,16 @@ public class ContactoVista extends javax.swing.JFrame {
         txtTel.setBordeColorFocus(new java.awt.Color(0, 113, 181));
         txtTel.setFont(new java.awt.Font("Roboto Bold", 0, 18)); // NOI18N
         txtTel.setPlaceholder("Teléfono");
-        txtTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 113, 181));
         jLabel2.setText("Gestión de Contactos");
 
         btnSearchId.setText("Buscar");
-        btnSearchId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchIdActionPerformed(evt);
-            }
-        });
 
         btnAddContact.setText("Agregar Contacto");
+
+        btnListarTodos.setText("Listar todos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,35 +231,44 @@ public class ContactoVista extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnAddContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(rSScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(145, 145, 145)))
-                .addGap(27, 27, 27))
+                        .addGap(132, 132, 132)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(180, 180, 180))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnListarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addGap(27, 27, 27))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(rSScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(13, 13, 13)
+                            .addGap(94, 94, 94)
                             .addComponent(jLabel3))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(105, 105, 105)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnListarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(rSScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,39 +285,11 @@ public class ContactoVista extends javax.swing.JFrame {
                         .addComponent(jTextCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAddContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtSearchIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchIdActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLastNameActionPerformed
-
-    private void txtName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtName1ActionPerformed
-
-    private void jTextCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCompanyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCompanyActionPerformed
-
-    private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelActionPerformed
-
-    private void btnSearchIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,6 +328,7 @@ public class ContactoVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.rsbutton.RSButtonRound btnAddContact;
+    private rojeru_san.rsbutton.RSButtonRound btnListarTodos;
     private rojeru_san.rsbutton.RSButtonRound btnSearchId;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
