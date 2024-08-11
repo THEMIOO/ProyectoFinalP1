@@ -1,38 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.itla.vista;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author ideapad
- */
 public class ContactoVista extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ContactoVista
-     */
     public ContactoVista() {
         initComponents();
-        
+
         // Centrar el jFRame
         setLocationRelativeTo(null);
-        
+
         btnCancel.setVisible(false);
         btnDeleteContacto.setVisible(false);
         btnUpdateContact.setVisible(false);
-        
+
         // Cambiemos el color de fondo
         getContentPane().setBackground(Color.WHITE);
     }
-    
-     public String getTxtSearchId() {
+
+    public String getTxtSearchId() {
         return txtSearchId.getText();
     }
 
@@ -87,44 +75,38 @@ public class ContactoVista extends javax.swing.JFrame {
     public void addAddContactListener(ActionListener listener) {
         btnAddContact.addActionListener(listener);
     }
-    
+
     public void addListarTodosListener(ActionListener listener) {
         btnListarTodos.addActionListener(listener);
     }
-    
+
     public void addEliminarContactListener(ActionListener listenForEliminarButton) {
-    btnDeleteContacto.addActionListener(listenForEliminarButton);
-}
+        btnDeleteContacto.addActionListener(listenForEliminarButton);
+    }
 
     public void addActualizarContactListener(ActionListener listenForActualizarButton) {
-    btnUpdateContact.addActionListener(listenForActualizarButton);
-}
-    
-    
-    public void addCancelListener(ActionListener listenForCancel){
-     btnCancel.addActionListener(listenForCancel);
+        btnUpdateContact.addActionListener(listenForActualizarButton);
     }
-   
-     
-     public void mostrarBotonActualizar(boolean mostrar){
-         btnUpdateContact.setVisible(mostrar);
-     }
-     
-     public void mostrarBotonEliminar(boolean mostrar){
-         btnDeleteContacto.setVisible(mostrar);
-     }
-     
-     public void mostrarBotonCancelar(boolean mostrar){
-         btnCancel.setVisible(mostrar);
-     }
-     
-     public void mostrarBotonAgregar(boolean mostrar){
-         btnAddContact.setVisible(mostrar);
-     }
-     
-    
 
+    public void addCancelListener(ActionListener listenForCancel) {
+        btnCancel.addActionListener(listenForCancel);
+    }
 
+    public void mostrarBotonActualizar(boolean mostrar) {
+        btnUpdateContact.setVisible(mostrar);
+    }
+
+    public void mostrarBotonEliminar(boolean mostrar) {
+        btnDeleteContacto.setVisible(mostrar);
+    }
+
+    public void mostrarBotonCancelar(boolean mostrar) {
+        btnCancel.setVisible(mostrar);
+    }
+
+    public void mostrarBotonAgregar(boolean mostrar) {
+        btnAddContact.setVisible(mostrar);
+    }
 
     public DefaultTableModel getTableModel() {
         return (DefaultTableModel) tblContact.getModel();
@@ -251,25 +233,10 @@ public class ContactoVista extends javax.swing.JFrame {
         btnListarTodos.setText("Listar todos");
 
         btnCancel.setText("Cancelar");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
 
         btnUpdateContact.setText("Actualizar");
-        btnUpdateContact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateContactActionPerformed(evt);
-            }
-        });
 
         btnDeleteContacto.setText("Eliminar");
-        btnDeleteContacto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteContactoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -364,18 +331,6 @@ public class ContactoVista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void btnUpdateContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateContactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateContactActionPerformed
-
-    private void btnDeleteContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteContactoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteContactoActionPerformed
 
     /**
      * @param args the command line arguments
