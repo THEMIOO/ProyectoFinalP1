@@ -1,9 +1,7 @@
 package com.itla.app;
 
 import com.itla.controller.ContactoController;
-import com.itla.db.DBManager;
 import com.itla.vista.ContactoVista;
-import com.sun.jdi.connect.spi.Connection;
 //import com.itla.vista.ContactoVista;
 
 

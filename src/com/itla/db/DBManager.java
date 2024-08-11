@@ -21,9 +21,8 @@ public class DBManager {
             e.printStackTrace();
         }
     }
-    
+
     public Connection getConnection() {
         return con;
     }
-    
-    }
+}
