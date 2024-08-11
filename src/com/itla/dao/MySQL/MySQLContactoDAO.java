@@ -95,14 +95,16 @@ public class MySQLContactoDAO implements ContactoDAO {
         try{
             PreparedStatement pstmnt;
             pstmnt = conn.prepareStatement(DELETE);
+            
             try(pstmnt){
                 pstmnt.setLong(1, con.getIdContacto());
+                pstmnt.executeUpdate();
                 
             }catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }catch (SQLException ex) {
-            Logger.getLogger(MySQLContactoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();        
         }
     }
 

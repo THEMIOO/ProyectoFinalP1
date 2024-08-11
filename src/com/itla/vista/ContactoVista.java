@@ -6,6 +6,7 @@ package com.itla.vista;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +23,10 @@ public class ContactoVista extends javax.swing.JFrame {
         
         // Centrar el jFRame
         setLocationRelativeTo(null);
+        
+        btnCancel.setVisible(false);
+        btnDeleteContacto.setVisible(false);
+        btnUpdateContact.setVisible(false);
         
         // Cambiemos el color de fondo
         getContentPane().setBackground(Color.WHITE);
@@ -86,6 +91,39 @@ public class ContactoVista extends javax.swing.JFrame {
     public void addListarTodosListener(ActionListener listener) {
         btnListarTodos.addActionListener(listener);
     }
+    
+    public void addEliminarContactListener(ActionListener listenForEliminarButton) {
+    btnDeleteContacto.addActionListener(listenForEliminarButton);
+}
+
+    public void addActualizarContactListener(ActionListener listenForActualizarButton) {
+    btnUpdateContact.addActionListener(listenForActualizarButton);
+}
+    
+    
+    public void addCancelListener(ActionListener listenForCancel){
+     btnCancel.addActionListener(listenForCancel);
+    }
+   
+     
+     public void mostrarBotonActualizar(boolean mostrar){
+         btnUpdateContact.setVisible(mostrar);
+     }
+     
+     public void mostrarBotonEliminar(boolean mostrar){
+         btnDeleteContacto.setVisible(mostrar);
+     }
+     
+     public void mostrarBotonCancelar(boolean mostrar){
+         btnCancel.setVisible(mostrar);
+     }
+     
+     public void mostrarBotonAgregar(boolean mostrar){
+         btnAddContact.setVisible(mostrar);
+     }
+     
+    
+
 
 
     public DefaultTableModel getTableModel() {
@@ -116,6 +154,9 @@ public class ContactoVista extends javax.swing.JFrame {
         btnSearchId = new rojeru_san.rsbutton.RSButtonRound();
         btnAddContact = new rojeru_san.rsbutton.RSButtonRound();
         btnListarTodos = new rojeru_san.rsbutton.RSButtonRound();
+        btnCancel = new rojeru_san.rsbutton.RSButtonRound();
+        btnUpdateContact = new rojeru_san.rsbutton.RSButtonRound();
+        btnDeleteContacto = new rojeru_san.rsbutton.RSButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -209,28 +250,56 @@ public class ContactoVista extends javax.swing.JFrame {
 
         btnListarTodos.setText("Listar todos");
 
+        btnCancel.setText("Cancelar");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
+        btnUpdateContact.setText("Actualizar");
+        btnUpdateContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateContactActionPerformed(evt);
+            }
+        });
+
+        btnDeleteContacto.setText("Eliminar");
+        btnDeleteContacto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteContactoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAddContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(32, 32, 32)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnAddContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDeleteContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnUpdateContact, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
@@ -284,12 +353,29 @@ public class ContactoVista extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(jTextCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAddContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAddContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDeleteContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnUpdateContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateContactActionPerformed
+
+    private void btnDeleteContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteContactoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteContactoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,8 +414,11 @@ public class ContactoVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.rsbutton.RSButtonRound btnAddContact;
+    private rojeru_san.rsbutton.RSButtonRound btnCancel;
+    private rojeru_san.rsbutton.RSButtonRound btnDeleteContacto;
     private rojeru_san.rsbutton.RSButtonRound btnListarTodos;
     private rojeru_san.rsbutton.RSButtonRound btnSearchId;
+    private rojeru_san.rsbutton.RSButtonRound btnUpdateContact;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
